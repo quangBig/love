@@ -1,63 +1,26 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Love Expression</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<div class="love">
-			<h2>Em cóa <span>yêu</span> anh hongg?</h2>
-			<a id="Khonggg" href="no.html">No</a>
-			<a id="Cóaaaa" href="yes.html">Yes</a>
-		</div>
-	</div>
-</body>
-</html>
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Love Expression</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .yes {
+            display: none;
+            /* Ẩn phần này ban đầu */
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let noButton = document.getElementById("Khonggg");
+            let yesButton = document.getElementById("Cóaaaa");
+            let yesDiv = document.querySelector(".yes");
 
+            // Xử lý nút "No" chạy
             noButton.addEventListener("mouseover", moveButton);
             noButton.addEventListener("click", moveButton);
 
@@ -69,23 +32,28 @@
                 noButton.style.left = x + "px";
                 noButton.style.top = y + "px";
             }
+
+            // Xử lý khi bấm nút "Yes"
+            yesButton.addEventListener("click", function () {
+                yesDiv.style.display = "block"; // Hiển thị nội dung khi bấm "Yes"
+            });
         });
     </script>
 </head>
+
 <body>
     <div class="container">
         <div class="love">
             <h2>Em cóa <span>yêu</span> anh hongg?</h2>
-            <a id="Khonggg" href="no.html">No</a>
-            <a id="Cóaaaa" href="yes.html">Yes</a>
+            <a id="Khonggg">No</a>
+            <a id="Cóaaaa">Yes</a>
         </div>
+    </div>
 
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
+    <div class="yes">
+        <h2>Anh cũng iu em nhìu lémmmm ❤️❤️❤️</h2>
+        <img src="heart.png" alt="heart"><img src="heart.png" alt="heart"><img src="heart.png" alt="heart">
     </div>
 </body>
+
 </html>
-
-
