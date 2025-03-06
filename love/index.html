@@ -1,59 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Love Expression</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tỏ Tình Dễ Thương 💖</title>
     <style>
-        .yes {
-            display: none;
-            /* Ẩn phần này ban đầu */
+        body {
+            font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #ffccdc;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #d63384;
+        }
+
+        .buttons {
             margin-top: 20px;
         }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #no {
+            background-color: #6c757d;
+            color: white;
+            position: absolute;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .love-message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d63384;
+        }
+
+        .hearts img {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let noButton = document.getElementById("Khonggg");
-            let yesButton = document.getElementById("Cóaaaa");
-            let yesDiv = document.querySelector(".yes");
-
-            // Xử lý nút "No" chạy
-            noButton.addEventListener("mouseover", moveButton);
-            noButton.addEventListener("click", moveButton);
-
-            function moveButton(event) {
-                event.preventDefault();
-                let x = Math.random() * (window.innerWidth - 100);
-                let y = Math.random() * (window.innerHeight - 50);
-                noButton.style.position = "absolute";
-                noButton.style.left = x + "px";
-                noButton.style.top = y + "px";
-            }
-
-            // Xử lý khi bấm nút "Yes"
-            yesButton.addEventListener("click", function () {
-                yesDiv.style.display = "block"; // Hiển thị nội dung khi bấm "Yes"
-            });
-        });
-    </script>
 </head>
 
 <body>
     <div class="container">
-        <div class="love">
-            <h2>Em cóa <span>yêu</span> anh hongg?</h2>
-            <a id="Khonggg">No</a>
-            <a id="Cóaaaa">Yes</a>
+        <h2>Em có yêu anh không? 💕</h2>
+        <div class="buttons">
+            <button id="yes">Yes 😘</button>
+            <button id="no">No 😭</button>
         </div>
     </div>
 
-    <div class="yes">
-        <h2>Anh cũng iu em nhìu lémmmm ❤️❤️❤️</h2>
-        <img src="heart.png" alt="heart"><img src="heart.png" alt="heart"><img src="heart.png" alt="heart">
+    <div class="hidden love-message">
+        <h2>Anh cũng yêu em nhiều lắm 😍💖</h2>
+        <div class="hearts">
+            <img src="heart.png" alt="heart">
+            <img src="heart.png" alt="heart">
+            <img src="heart.png" alt="heart">
+        </div>
+        <p>💖 Mãi bên nhau em nhé! 💖</p>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
+            let loveMessage = document.querySelector(".love-message");
+
+            // Xử lý nút "No" chạy
+            noButton.addEventListener("mouseover", function () {
+                let x = Math.random() * (window.innerWidth - 100);
+                let y = Math.random() * (window.innerHeight - 50);
+                noButton.style.left = x + "px";
+                noButton.style.top = y + "px";
+            });
+
+            // Khi bấm vào "Yes", hiển thị thông điệp yêu thương
+            yesButton.addEventListener("click", function () {
+                document.querySelector(".container").style.display = "none"; // Ẩn câu hỏi
+                loveMessage.classList.remove("hidden"); // Hiện thông điệp yêu thương
+            });
+        });
+    </script>
 </body>
 
 </html>
