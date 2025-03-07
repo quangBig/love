@@ -86,9 +86,10 @@
         }
 
         .hearts img {
-            width: 50px;
-            height: 50px;
+            width: 500px;
+            height: 600px;
             margin: 5px;
+            border-radius: 20px;
         }
 
         /* Responsive cho điện thoại */
@@ -131,49 +132,63 @@
     <div class="love-message">
         <h2>Anh cũng yêu em nhiều lắm 😍💖</h2>
         <div class="hearts">
-            <img src="heart.png" alt="heart">
-            <img src="heart.png" alt="heart">
-            <img src="heart.png" alt="heart">
+            <img src="./z6380431560187_fa944cb4b1b2cd53f3bd6ad5b432d31e.jpg" alt="heart">
+
         </div>
         <p>💖 Mãi bên nhau em nhé! 💖</p>
     </div>
 
     <script>
-        // document.addEventListener("DOMContentLoaded", function () {
-        //     let noButton = document.getElementById("no");
-        //     let yesButton = document.getElementById("yes");
-        //     let loveMessage = document.querySelector(".love-message");
-
-        //     // Nút "No" chạy khi rê chuột vào
-        //     noButton.addEventListener("mouseover", function () {
-        //         let x = Math.random() * (window.innerWidth - 100);
-        //         let y = Math.random() * (window.innerHeight - 50);
-        //         noButton.style.position = "absolute";
-        //         noButton.style.left = x + "px";
-        //         noButton.style.top = y + "px";
-        //     });
-
-        //     // Khi bấm vào "Yes", hiển thị thông điệp yêu thương
-        //     yesButton.addEventListener("click", function () {
-        //         document.querySelector(".container").style.display = "none"; // Ẩn câu hỏi
-        //         loveMessage.style.display = "block"; // Hiện thông điệp yêu thương
-        //     });
-        // });
         document.addEventListener("DOMContentLoaded", function () {
             let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
+            let loveMessage = document.querySelector(".love-message");
+            let container = document.querySelector(".container");
+            let moveCount = 0; // Đếm số lần di chuyển của nút "No"
 
-            noButton.addEventListener("mouseover", moveButton);
-            noButton.addEventListener("click", moveButton);
+            container.style.position = "relative";
+            noButton.style.position = "absolute";
 
-            function moveButton(event) {
-                event.preventDefault();
-                let x = Math.random() * (window.innerWidth - 100);
-                let y = Math.random() * (window.innerHeight - 50);
-                noButton.style.position = "absolute";
-                noButton.style.left = x + "px";
-                noButton.style.top = y + "px";
-            }
+            // Xử lý hover để nút "No" di chuyển
+            noButton.addEventListener("mouseover", function () {
+                let maxX = container.clientWidth - noButton.offsetWidth - 30;
+                let maxY = container.clientHeight - noButton.offsetHeight - 30;
+
+                let x = Math.max(10, Math.random() * maxX);
+                let y = Math.max(10, Math.random() * maxY);
+
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+
+                // Đếm số lần di chuyển
+                moveCount++;
+
+                if (moveCount >= 5) {
+                    noButton.textContent = "Có đuổi tao cả đời 💖";
+                    yesButton.textContent = "Bấm em đi 😭";
+                }
+            });
+
+            // Xử lý khi bấm "Yes"
+            yesButton.addEventListener("click", function () {
+                container.style.display = "none";
+                loveMessage.style.display = "block";
+            });
+
+            // Đảm bảo nút không nhảy ra ngoài khi resize cửa sổ
+            window.addEventListener("resize", function () {
+                let maxX = window.innerWidth - noButton.offsetWidth - 10;
+                let maxY = window.innerHeight - noButton.offsetHeight - 10;
+
+                let currentX = parseInt(noButton.style.left) || 0;
+                let currentY = parseInt(noButton.style.top) || 0;
+
+                if (currentX > maxX) noButton.style.left = maxX + "px";
+                if (currentY > maxY) noButton.style.top = maxY + "px";
+            });
         });
+
+
     </script>
 </body>
 
